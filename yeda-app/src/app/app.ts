@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { Home } from './home/home';
-import { About } from './about/about';
-import { Contact } from './contact/contact';
+import { RouterOutlet } from '@angular/router';
 import { Footer } from './footer/footer';
+import { Navbar } from './navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Home, About, Contact, Footer], 
+  imports: [RouterOutlet, Footer, Navbar],
   template: `
-    <app-home></app-home>
-    <app-about></app-about>
-    <app-contact></app-contact>
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
     <app-footer></app-footer>
   `,
 })
