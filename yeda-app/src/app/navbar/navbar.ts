@@ -8,4 +8,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
-export class Navbar {}
+export class Navbar {
+  toggleMenu() {
+    const navList = document.querySelector('.nav__list');
+    navList?.classList.toggle('show');
+  }
+}
