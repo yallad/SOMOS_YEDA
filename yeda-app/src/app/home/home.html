@@ -1,262 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <title>YEDA</title>
-  <link rel="stylesheet" href="home.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.9/build/spline-viewer.js"></script>
-</head>
-<body>
-<!-- HEADER NO FIJO -->
-  <header class="header">
-    <div class="logo-header">
-      <img src="../../assets/logo-yeda.png" alt="Logo" />
-    </div>
-    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-    <nav class="menu" id="menu">
-      <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Servicios</a></li>
-        <li><a href="#">Portafolio</a></li>
-        <li><a href="#">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
-<!-- INTRO -->
+<!-- home.component.html -->
 <section class="intro">
   <div class="intro-gif">
     <img src="../../assets/YEDAsaludo.gif" alt="Saludo YEDA" />
     <a href="#contacto" class="contact-button">Contáctanos</a>
   </div>
-  <div class="intro-texto">
-    <h1>¡Bienvenidos a YEDA!</h1>
-    <p>Somos un equipo de desarrolladoras, creamos soluciones para empresas enfocadas en soluciones personalizadas y eficientes para tus necesidades tecnológicas, con un enfoque especial en la creación de aplicaciones web y móviles. Nuestro objetivo es transformar ideas en realidades digitales, brindando un servicio de alta calidad y adaptado a las necesidades de cada cliente.
-</p>
-    <p>En YEDA, creemos en la innovación constante y en el trabajo colaborativo para ofrecer soluciones que no solo cumplan con los estándares más altos de calidad, sino que también superen todas las expectativas.</p>
-    <p>Nos apasiona la tecnología y estamos comprometidas con el éxito de nuestros clientes, trabajando codo a codo para lograr resultados excepcionales.</p>
-  </div>
+ <div class="intro-texto">
+  <h1>¡Bienvenidos a YEDA!</h1>
+  <p>Somos un equipo de mujeres desarrolladoras apasionadas por la tecnología y la innovación. Creamos soluciones digitales a medida que se adaptan a las necesidades específicas de cada empresa, combinando funcionalidad, diseño y eficiencia.</p>
+  <p>En YEDA creemos en la transformación a través del código. Por eso, nos enfocamos en el desarrollo de aplicaciones web y móviles que no solo resuelven problemas, sino que también potencian oportunidades.</p>
+  <p>Trabajamos en colaboración cercana con nuestros clientes para garantizar resultados excepcionales, guiadas por el compromiso, la empatía y el deseo de construir tecnología con propósito.</p>
+</div>
+
 </section>
-<!-- FIN INTRO -->
-<!-- TÍTULO SERVICIOS -->
-<h2 class="servicios-title"> NUESTROS SERVICIOS</h2>
-<!-- CARRUSEL DE SERVICIOS -->
+
+<h2 class="servicios-title">NUESTROS SERVICIOS</h2>
+
 <section id="servicios" class="services-section">
   <div class="carousel-container">
     <div class="carousel-wrapper" id="carousel-wrapper">
-      <!-- TARJETA 1 -->
-      <div class="carousel-card">
+      <div class="carousel-card" *ngFor="let service of services">
         <div class="card-text">
-          <h3>Desarrollo Web</h3>
-          <p>Creamos sitios web personalizados y optimizados para tu negocio.</p>
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
           <a href="#" class="btn-ver-mas">Ver más</a>
         </div>
         <div class="card-image">
-          <img src="../../assets/CarruselDS1.png" alt="Diseño Web">
-        </div>
-      </div>
-
-      <!-- TARJETA 2 -->
-      <div class="carousel-card">
-        <div class="card-text">
-          <h3>Aplicaciones Móviles</h3>
-          <p>Desarrollamos aplicaciones móviles intuitivas y funcionales para iOS y Android.</p>
-          <a href="#" class="btn-ver-mas">Ver más</a>
-        </div>
-        <div class="card-image">
-          <img src="../../assets/CarruselApp2.png" alt="Marketing Digital">
-        </div>
-      </div>
-
-      <!-- TARJETA 3 -->
-      <div class="carousel-card">
-        <div class="card-text">
-          <h3>Software a la medida</h3>
-          <p>Desarrollamos soluciones de software personalizadas para optimizar tus procesos empresariales.</p>
-          <a href="#" class="btn-ver-mas">Ver más</a>
-        </div>
-        <div class="card-image">
-          <img src="../../assets/Carruselsoft3.png" alt="Software">
-        </div>
-      </div>
-
-      <!-- TARJETA 4 -->
-      <div class="carousel-card">
-        <div class="card-text">
-          <h3>Diseño</h3>
-          <p>Creamos diseños atractivos y funcionales que reflejan la identidad de tu marca.</p>
-          <a href="#" class="btn-ver-mas">Ver más</a>
-        </div>
-        <div class="card-image">
-          <img src="../../assets/Carruseldise4.png" alt="Diseño">
-        </div>
-      </div>
-
-      <!-- TARJETA 5 -->
-      <div class="carousel-card">
-        <div class="card-text">
-          <h3>Consultoría</h3>
-          <p>Ofrecemos asesoramiento experto para ayudarte a tomar decisiones informadas sobre tus proyectos tecnológicos.</p>
-          <a href="#" class="btn-ver-mas">Ver más</a>
-        </div>
-        <div class="card-image">
-          <img src="../../assets/Carruselconsu5.png" alt="Consultoría">
+          <img [src]="service.image" [alt]="service.title">
         </div>
       </div>
     </div>
- <!-- CONTROLES DEL CARRUSEL -->
     <div class="carousel-controls">
-      <button id="prevBtn" class="carousel-btn">←</button>
+      <button id="prevBtn" class="carousel-btn">&larr;</button>
       <div class="carousel-indicators" id="carousel-indicators"></div>
-      <button id="nextBtn" class="carousel-btn">→</button>
+      <button id="nextBtn" class="carousel-btn">&rarr;</button>
     </div>
   </div>
 </section>
 
-<!-- JAVASCRIPT DEL CARRUSEL -->
-<script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
-
-  const wrapper = document.querySelector('.carousel-wrapper');
-  const indicatorsContainer = document.querySelector('#carousel-indicators');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const cards = document.querySelectorAll('.carousel-card');
-
-  let currentIndex = 0;
-  let autoSlideInterval;
-
-  function getCardsPerView() {
-    return window.innerWidth >= 1024 ? 2 : 1;
-  }
-
-  function updateCarousel() {
-    const cardStyle = getComputedStyle(cards[0]);
-    const cardWidth = cards[0].offsetWidth + parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
-    wrapper.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    updateIndicators();
-  }
-
-  function updateIndicators() {
-    const dots = indicatorsContainer.querySelectorAll('.indicator');
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentIndex);
-    });
-  }
-
-  function createIndicators() {
-    indicatorsContainer.innerHTML = '';
-    const maxIndex = cards.length - getCardsPerView();
-    for (let i = 0; i <= maxIndex; i++) {
-      const dot = document.createElement('span');
-      dot.classList.add('indicator');
-      if (i === currentIndex) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentIndex = i;
-        updateCarousel();
-      });
-      indicatorsContainer.appendChild(dot);
-    }
-  }
-
-  function nextSlide() {
-    const maxIndex = cards.length - getCardsPerView();
-    currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
-    updateCarousel();
-  }
-
-  function prevSlide() {
-    const maxIndex = cards.length - getCardsPerView();
-    currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1;
-    updateCarousel();
-  }
-
-  function handleResize() {
-    const isDesktop = window.innerWidth >= 1024;
-
-    prevBtn.style.display = isDesktop ? 'inline-block' : 'none';
-    nextBtn.style.display = isDesktop ? 'inline-block' : 'none';
-    indicatorsContainer.style.display = isDesktop ? 'flex' : 'none';
-
-    if (!isDesktop) {
-      startAutoSlide();
-    } else {
-      stopAutoSlide();
-    }
-
-    currentIndex = 0;
-    createIndicators();
-    updateCarousel();
-  }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    autoSlideInterval = setInterval(() => {
-      nextSlide();
-    }, 4000);
-  }
-
-  function stopAutoSlide() {
-    if (autoSlideInterval) {
-      clearInterval(autoSlideInterval);
-    }
-  }
-
-  prevBtn.addEventListener('click', prevSlide);
-  nextBtn.addEventListener('click', nextSlide);
-  window.addEventListener('resize', handleResize);
-
-  // Inicialización
-  createIndicators();
-  updateCarousel();
-  handleResize();
-</script>
-
-<!-- SLIDER DE LOGOS-->
 <section class="tech-slider">
   <div class="slider-track">
-    <img src="../../assets/angular.png" alt="Angular">
-    <img src="../../assets/typescript.webp" alt="Typescript">
-    <img src="../../assets/Python.png" alt="Python">
-    <img src="../../assets/javascript.webp" alt="JavaScript">
-    <img src="../../assets/java.png" alt="Java">
-    <img src="../../assets/HTML5.png" alt="HTML5">
-    <img src="../../assets/nodejs.png" alt="NodeJS">
-    <img src="../../assets/microsoft.png" alt="Microsoft">
-    <img src="../../assets/CSS3.png" alt="CSS3">
-    <img src="../../assets/angular.png" alt="Angular">
-    <img src="../../assets/typescript.webp" alt="Typescript">
-    <img src="../../assets/Python.png" alt="Python">
-    <img src="../../assets/javascript.webp" alt="JavaScript">
-    <img src="../../assets/java.png" alt="Java">
-    <img src="../../assets/HTML5.png" alt="HTML5">
-    <img src="../../assets/nodejs.png" alt="NodeJS">
-    <img src="../../assets/microsoft.png" alt="Microsoft">
-    <img src="../../assets/CSS3.png" alt="CSS3">
+    <img *ngFor="let logo of techLogos" [src]="logo" alt="Tecnología">
   </div>
 </section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-content">
-    <div class="footer-logo">
-      <img src="yeda.png" alt="Logo YEDA" />
-    </div>
-    <div class="footer-social">
-      <a href="#"><img src="../../assets/facebook-icon.png" alt="Facebook"></a>
-      <a href="#"><img src="../../assets/twitter-icon.png" alt="Twitter"></a>
-      <a href="#"><img src="../../assets/instagram-icon.png" alt="Instagram"></a>
-    </div>
-  <div class="footer-text">
-    <p>&copy; 2023 YEDA. Todos los derechos reservados.</p>
-  </div>
-</footer>
-
-
-</body>
-</html>
