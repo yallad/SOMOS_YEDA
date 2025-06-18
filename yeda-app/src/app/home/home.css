@@ -122,8 +122,6 @@ body {
   color: #ffffff;
 }
 
-
-
 /* TÍTULO SERVICIOS */
 .servicios-title {
   text-align: center;
@@ -300,10 +298,10 @@ body {
 }
  /*SLIDER*/
  .tech-slider {
-  background-color: #B298DC; /* Cambiar fondo: tono oscuro púrpura */
+  background-color: #B298DC; 
   padding: 30px 0;
   overflow: hidden;
-  margin-top: 50px; /* Separación desde el carrusel */
+  margin-top: 40px;
 }
 
 .slider-track {
