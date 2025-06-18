@@ -1,54 +1,148 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>YEDA</title>
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="home.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.9/build/spline-viewer.js"></script>
 </head>
 <body>
-
+<!-- HEADER NO FIJO -->
 <header class="header">
-  <div class="logo-header">
-    <a href="#"><img src="src/assets/logo-yeda.png" alt="Logo YEDA"></a>
-  </div>
+  <a href="#" class="logo-header">
+    <img src="../../assets/logo-yeda.png" alt="Logo YEDA" />
+  </a>
   <nav class="menu">
     <ul>
       <li><a href="#">Inicio</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Sobre Nosotras</a></li>
+      <li><a href="#">Contacto</a></li>
     </ul>
   </nav>
   <button class="menu-toggle" id="menu-toggle">☰</button>
 </header>
-
-<!--Intro-->
+<!-- INTRO -->
 <section class="intro">
   <div class="intro-gif">
-    <img src="../../assets/YEDAsaludo.gif" alt="Saludo YEDA">
+    <img src="../../assets/YEDAsaludo.gif" alt="Saludo YEDA" />
+    <a href="#contacto" class="contact-button">Contáctanos</a>
   </div>
   <div class="intro-texto">
     <h1>¡Bienvenidos a YEDA!</h1>
-    <p>Somos un equipo de desarrolladoras, creamos soluciones para empresas enfocadas en soluciones
-      personalizadas y eficientes para tus necesidades tecnológicas. Nuestro objetivo es
-      ofrecerte un servicio de alta calidad, adaptado a tus requerimientos específicos. Nos especializamos en un desarrollo ágil, diseño
-      funcional y una experiencia de usuario excepcional. Ya sea que necesites una aplicación web, móvil o un sistema a medida, estamos aquí para ayudarte a alcanzar tus metas tecnológicas.</p>
-    <p>En YEDA, creemos en la innovación constante y en el trabajo colaborativo. Nuestro equipo está compuesto por profesionales apasionadas por la tecnología y comprometidas con la excelencia. Nos esforzamos por entender tus necesidades y ofrecerte soluciones que no solo cumplan con tus expectativas, sino que las superen.</p>
+    <p>Somos un equipo de desarrolladoras, creamos soluciones para empresas enfocadas en soluciones personalizadas y eficientes para tus necesidades tecnológicas, con un enfoque especial en la creación de aplicaciones web y móviles. Nuestro objetivo es transformar ideas en realidades digitales, brindando un servicio de alta calidad y adaptado a las necesidades de cada cliente.
+</p>
+    <p>En YEDA, creemos en la innovación constante y en el trabajo colaborativo para ofrecer soluciones que no solo cumplan con los estándares más altos de calidad, sino que también superen todas las expectativas.</p>
+    <p>Nos apasiona la tecnología y estamos comprometidas con el éxito de nuestros clientes, trabajando codo a codo para lograr resultados excepcionales.</p>
+  </div>
+</section>
+<!-- FIN INTRO -->
+<!-- TÍTULO SERVICIOS -->
+<h2 class="servicios-title"> NUESTROS SERVICIOS</h2>
+<!--CARRUSEL DE SERVICIOS-->
+<section id="servicios">
+  <div class="carousel-container">
+    <div class="carousel-wrapper" id="carousel-wrapper">
+
+      <!-- TARJETA 1 -->
+      <div class="carousel-card">
+        <div class="card-text">
+          <h3>Desarrollo Web</h3>
+          <p>Creamos sitios web personalizados y optimizados para tu negocio.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+        <div class="card-image">
+          <img src="../../assets/CarruselDS1.png" alt="Diseño Web">
+        </div>
+      </div>
+      <!-- FIN TARJETA 1 -->
+
+      <!-- TARJETA 2 -->
+      <div class="carousel-card">
+        <div class="card-text">
+          <h3>Aplicaciones Móviles</h3>
+          <p>Desarrollamos aplicaciones móviles intuitivas y funcionales para iOS y Android.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+        <div class="card-image">
+          <img src="../../assets/CarruselApp2.png" alt="Marketing Digital">
+        </div>
+      </div>
+      <!-- FIN TARJETA 2 -->
+
+      <!-- TARJETA 3 -->
+      <div class="carousel-card">
+        <div class="card-text">
+          <h3>Software a la medida</h3>
+          <p>Desarrollamos soluciones de software personalizadas para optimizar tus procesos empresariales.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+        <div class="card-image">
+          <img src="../../assets/Carruselsoft3.png" alt="Branding">
+        </div>
+      </div>
+      <!-- FIN TARJETA 3 -->
+
+      <!-- TARJETA 4 -->
+      <div class="carousel-card">
+        <div class="card-text">
+          <h3>Diseño</h3>
+          <p>Creamos diseños atractivos y funcionales que reflejan la identidad de tu marca.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+        <div class="card-image">
+          <img src="../../assets/Carruseldise4.png" alt="Consultoría">
+        </div>
+      </div>
+      <!-- FIN TARJETA 4 -->
+
+      <!-- TARJETA 5 -->
+      <div class="carousel-card">
+        <div class="card-text">
+          <h3>Consultoría</h3>
+          <p>Ofrecemos asesoramiento experto para ayudarte a tomar decisiones informadas sobre tus proyectos tecnológicos.</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+        <div class="card-image">
+          <img src="../../assets/Carruselconsu5.png" alt="Soporte Técnico">
+        </div>
+      </div>
+      <!-- FIN TARJETA 5 -->
+
+    </div>
+
+    <!-- Controles del carrusel -->
+    <div class="carousel-controls">
+      <button id="prevBtn" class="carousel-btn">←</button>
+      <div class="carousel-indicators" id="carousel-indicators"></div>
+      <button id="nextBtn" class="carousel-btn">→</button>
+    </div>
+  </div>
+</section>
+<!-- FIN CARRUSEL DE SERVICIOS -->
+<section class="tech-slider">
+  <div class="slider-track">
+    <img src="../../assets/angular.png" alt="Angular">
+    <img src="../../assets/typescript.webp" alt="Typescript">
+    <img src="../../assets/Python.png" alt="Python">
+    <img src="../../assets/javascript.webp" alt="JavaScript">
+    <img src="../../assets/java.png" alt="Java">
+    <img src="../../assets/HTML5.png" alt="HTML5">
+    <img src="../../assets/nodejs.png" alt="NodeJS">
+    <img src="../../assets/microsoft.png" alt="Microsoft">
+    <img src="../../assets/CSS3.png" alt="CSS3">
+    <img src="../../assets/angular.png" alt="Angular">
+    <img src="../../assets/typescript.webp" alt="Typescript">
+    <img src="../../assets/Python.png" alt="Python">
+    <img src="../../assets/javascript.webp" alt="JavaScript">
+    <img src="../../assets/java.png" alt="Java">
+    <img src="../../assets/HTML5.png" alt="HTML5">
+    <img src="../../assets/nodejs.png" alt="NodeJS">
+    <img src="../../assets/microsoft.png" alt="Microsoft">
+    <img src="../../assets/CSS3.png" alt="CSS3">
   </div>
 </section>
 
-<!--Carrusel-->
-<div class="carrusel">
-  <div class="slides" id="slides">
-    <div class="slide"><img src="https://via.placeholder.com/1000x400/8e44ad/ffffff?text=Slide+1" alt="Imagen 1"></div>
-    <div class="slide"><img src="https://via.placeholder.com/1000x400/3498db/ffffff?text=Slide+2" alt="Imagen 2"></div>
-    <div class="slide"><img src="https://via.placeholder.com/1000x400/e74c3c/ffffff?text=Slide+3" alt="Imagen 3"></div>
-  </div>
-  <div class="botones">
-    <button onclick="moverSlide(-1)">&#10094;</button>
-    <button onclick="moverSlide(1)">&#10095;</button>
-  </div>
-</div>
 
 <!-- Menú hamburguesa -->
 <script>
@@ -59,6 +153,22 @@
     menu.classList.toggle('show');
   });
 </script>
+</section>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">
+      <img src="yeda.png" alt="Logo YEDA" />
+    </div>
+    <div class="footer-social">
+      <a href="#"><img src="../../assets/facebook-icon.png" alt="Facebook"></a>
+      <a href="#"><img src="../../assets/twitter-icon.png" alt="Twitter"></a>
+      <a href="#"><img src="../../assets/instagram-icon.png" alt="Instagram"></a>
+    </div>
+  <div class="footer-text">
+    <p>&copy; 2023 YEDA. Todos los derechos reservados.</p>
+  </div>
+</footer>
 </body>
 </html>
