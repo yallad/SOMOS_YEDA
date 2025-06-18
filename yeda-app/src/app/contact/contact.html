@@ -1,1 +1,77 @@
-<p>contact works!</p>
+<div class="contact-main-layout">
+  <div class="contact-content-row">
+    <div class="contact-form-container">
+      <div class="contact-header">
+        <h2 class="titulo-destacado">Contáctanos</h2>
+        <p>¿Tienes dudas o comentarios? ¡Escríbenos y te responderemos pronto!</p>
+      </div>
+      <form class="contact-form" autocomplete="off">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <div class="input-icon-group">
+            <span class="input-icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="icono usuario">
+            </span>
+            <input type="text" id="name" name="name" required minlength="2" placeholder="Tu nombre">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <div class="input-icon-group">
+            <span class="input-icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="icono email">
+            </span>
+            <input type="email" id="email" name="email" required placeholder="tucorreo@ejemplo.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje</label>
+          <textarea id="message" name="message" rows="4" required minlength="10" placeholder="Escribe tu mensaje..."></textarea>
+        </div>
+        <button type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+<div class="contact-side-container">
+  <div class="side-placeholder">
+    <!-- GIF de saludo grande arriba -->
+    <h3>¿Por qué contactarnos?</h3>
+    <p>Estamos aquí para ayudarte. Ya sea una consulta, sugerencia o colaboración, tu mensaje es importante para nosotros.</p>
+     <img
+      src="assets/saludo.GIF"
+      alt="Saludo animado"
+      class="side-gif"
+    >
+      <button id="playPauseBtn" class="mini-video-btn">▶</button>
+    </div>
+  </div>
+</div>
+  <div class="contact-other-container">
+    <h2 >Otras formas de contacto</h2>
+    <div class="contact-methods-row">
+      <a href="mailto:contacto@yeda.com" class="contact-method-card" title="Correo">
+        <img class="contact-method-icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Correo">
+        <span>contacto&#64;yeda.com</span>
+      </a>
+      <a href="https://www.linkedin.com/in/tuusuario" target="_blank" class="contact-method-card" title="LinkedIn">
+        <img class="contact-method-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn">
+        <span>/tuusuario</span>
+      </a>
+      <a href="tel:+521234567890" class="contact-method-card" title="Teléfono">
+        <img class="contact-method-icon" src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono">
+        <span>+52 123 456 7890</span>
+      </a>
+      <a href="https://www.instagram.com/tuusuario" target="_blank" class="contact-method-card" title="Instagram">
+        <img class="contact-method-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/instagram/instagram-original.svg" alt="Instagram">
+        <span>&#64;tuusuario</span>
+      </a>
+      <a href="https://www.tiktok.com/@tuusuario" target="_blank" class="contact-method-card" title="TikTok">
+        <img class="contact-method-icon" src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok">
+        <span>&#64;tuusuario</span>
+      </a>
+    </div>
+  </div>
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/521XXXXXXXXXX" target="_blank" class="whatsapp-float" title="Chatea con nosotros por WhatsApp" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:60px; height:60px;">
+  </a>
+</div>
