@@ -1,3 +1,4 @@
+/* GENERAL */
 body {
   margin: 0;
   padding: 0;
@@ -16,16 +17,17 @@ body {
   padding: 0 40px;
   background: linear-gradient(to right, #240046, #3C096C, #240046);
   box-sizing: border-box;
-}
-
-.logo-header {
-  display: flex;
-  align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .logo-header img {
   height: 150px;
   width: auto;
+}
+
+.menu {
+  display: flex;
 }
 
 .menu ul {
@@ -68,7 +70,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Contenedor del suricato y botón */
 .intro-gif {
   display: flex;
   flex-direction: column;
@@ -78,14 +79,12 @@ body {
   min-width: 250px;
 }
 
-/* Imagen del suricato */
 .intro-gif img {
   max-width: 400px;
   width: 100%;
   height: auto;
 }
 
-/* Contenido de texto */
 .intro-texto {
   flex: 2;
   min-width: 300px;
@@ -144,6 +143,7 @@ body {
   padding: 60px 40px;
   flex-wrap: wrap;
 }
+
 /* CARRUSEL */
 .carousel-container {
   position: relative;
@@ -152,13 +152,11 @@ body {
   overflow: hidden;
 }
 
-/* ===== CARRUSEL WRAPPER ===== */
 .carousel-wrapper {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-/* ===== TARJETAS DEL CARRUSEL ===== */
 .carousel-card {
   background-color: #10002b;
   border-radius: 12px;
@@ -177,7 +175,6 @@ body {
   transform: translateY(-5px);
 }
 
-/* ===== TEXTO DE LAS TARJETAS ===== */
 .card-text {
   text-align: left;
   max-width: 60%;
@@ -209,7 +206,6 @@ body {
   background-color: #3a3a6a;
 }
 
-/* ===== IMAGEN DE LA TARJETA ===== */
 .card-image {
   max-width: 35%;
 }
@@ -219,7 +215,6 @@ body {
   border-radius: 8px;
 }
 
-/* ===== CONTROLES DEL CARRUSEL ===== */
 .carousel-controls {
   display: flex;
   justify-content: center;
@@ -244,7 +239,6 @@ body {
   background-color: #B298DC;
 }
 
-/* ===== INDICADORES ===== */
 .carousel-indicators {
   display: flex;
   gap: 8px;
@@ -263,13 +257,51 @@ body {
   background-color: #5e5dbb;
 }
 
-/* ===== RESPONSIVE TABLET Y MÓVIL ===== */
+/* SLIDER */
+.tech-slider {
+  background-color: #B298DC; 
+  padding: 30px 0;
+  overflow: hidden;
+  margin-top: 40px;
+}
+
+.slider-track {
+  display: flex;
+  width: calc(150px * 12); 
+  animation: scroll 25s linear infinite;
+  gap: 20px; 
+  align-items: center;
+}
+
+.slider-track img {
+  width: 100px;
+  height: auto;
+  margin: 0 25px;
+  filter: brightness(1.1);
+  transition: transform 0.3s ease;
+}
+
+.slider-track img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.services-section {
+  margin-bottom: 60px;
+}
+
+/* ======================== RESPONSIVE ======================== */
+
+/* Tablets */
 @media (max-width: 1024px) {
   .carousel-card {
     min-width: 90%;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
   }
 
   .card-text {
@@ -287,54 +319,59 @@ body {
   }
 }
 
+/* Celulares */
 @media (max-width: 768px) {
-  .section-title {
+  .header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #3C096C;
+    padding: 10px 20px;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .menu ul li {
+    margin-bottom: 10px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .intro {
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .intro-texto h1 {
     font-size: 2rem;
+    text-align: center;
+  }
+
+  .intro-texto p {
+    font-size: 1rem;
+    text-align: center;
   }
 
   .btn-ver-mas {
     font-size: 0.85rem;
   }
 }
- /*SLIDER*/
- .tech-slider {
-  background-color: #B298DC; 
-  padding: 30px 0;
-  overflow: hidden;
-  margin-top: 40px;
-}
 
-.slider-track {
-  display: flex;
-  width: calc(150px * 12); /* 12 logos */
-  animation: scroll 25s linear infinite;
-  gap: 20px; /* Espacio entre logos */
-  align-items: center;
-}
-
-.slider-track img {
-  width: 100px;
-  height: auto;
-  margin: 0 25px;
-  filter: brightness(1.1);
-  transition: transform 0.3s ease;
-}
-
-.slider-track img:hover {
-  transform: scale(1.1);
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-/* Asegura separación entre "Nuestros Servicios" y el slider también */
-.services-section {
-  margin-bottom: 60px;
-}
-/* Responsive */

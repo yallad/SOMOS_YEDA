@@ -9,19 +9,20 @@
 </head>
 <body>
 <!-- HEADER NO FIJO -->
-<header class="header">
-  <a href="#" class="logo-header">
-    <img src="../../assets/logo-yeda.png" alt="Logo YEDA" />
-  </a>
-  <nav class="menu">
-    <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Sobre Nosotras</a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
-  </nav>
-  <button class="menu-toggle" id="menu-toggle">☰</button>
-</header>
+  <header class="header">
+    <div class="logo-header">
+      <img src="../../assets/logo-yeda.png" alt="Logo" />
+    </div>
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    <nav class="menu" id="menu">
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Portafolio</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 <!-- INTRO -->
 <section class="intro">
   <div class="intro-gif">
@@ -39,11 +40,10 @@
 <!-- FIN INTRO -->
 <!-- TÍTULO SERVICIOS -->
 <h2 class="servicios-title"> NUESTROS SERVICIOS</h2>
-<!--CARRUSEL DE SERVICIOS-->
-<section id="servicios">
+<!-- CARRUSEL DE SERVICIOS -->
+<section id="servicios" class="services-section">
   <div class="carousel-container">
     <div class="carousel-wrapper" id="carousel-wrapper">
-
       <!-- TARJETA 1 -->
       <div class="carousel-card">
         <div class="card-text">
@@ -55,7 +55,6 @@
           <img src="../../assets/CarruselDS1.png" alt="Diseño Web">
         </div>
       </div>
-      <!-- FIN TARJETA 1 -->
 
       <!-- TARJETA 2 -->
       <div class="carousel-card">
@@ -68,7 +67,6 @@
           <img src="../../assets/CarruselApp2.png" alt="Marketing Digital">
         </div>
       </div>
-      <!-- FIN TARJETA 2 -->
 
       <!-- TARJETA 3 -->
       <div class="carousel-card">
@@ -78,10 +76,9 @@
           <a href="#" class="btn-ver-mas">Ver más</a>
         </div>
         <div class="card-image">
-          <img src="../../assets/Carruselsoft3.png" alt="Branding">
+          <img src="../../assets/Carruselsoft3.png" alt="Software">
         </div>
       </div>
-      <!-- FIN TARJETA 3 -->
 
       <!-- TARJETA 4 -->
       <div class="carousel-card">
@@ -91,10 +88,9 @@
           <a href="#" class="btn-ver-mas">Ver más</a>
         </div>
         <div class="card-image">
-          <img src="../../assets/Carruseldise4.png" alt="Consultoría">
+          <img src="../../assets/Carruseldise4.png" alt="Diseño">
         </div>
       </div>
-      <!-- FIN TARJETA 4 -->
 
       <!-- TARJETA 5 -->
       <div class="carousel-card">
@@ -104,14 +100,11 @@
           <a href="#" class="btn-ver-mas">Ver más</a>
         </div>
         <div class="card-image">
-          <img src="../../assets/Carruselconsu5.png" alt="Soporte Técnico">
+          <img src="../../assets/Carruselconsu5.png" alt="Consultoría">
         </div>
       </div>
-      <!-- FIN TARJETA 5 -->
-
     </div>
-
-    <!-- Controles del carrusel -->
+ <!-- CONTROLES DEL CARRUSEL -->
     <div class="carousel-controls">
       <button id="prevBtn" class="carousel-btn">←</button>
       <div class="carousel-indicators" id="carousel-indicators"></div>
@@ -119,7 +112,112 @@
     </div>
   </div>
 </section>
-<!-- FIN CARRUSEL DE SERVICIOS -->
+
+<!-- JAVASCRIPT DEL CARRUSEL -->
+<script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+
+  const wrapper = document.querySelector('.carousel-wrapper');
+  const indicatorsContainer = document.querySelector('#carousel-indicators');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const cards = document.querySelectorAll('.carousel-card');
+
+  let currentIndex = 0;
+  let autoSlideInterval;
+
+  function getCardsPerView() {
+    return window.innerWidth >= 1024 ? 2 : 1;
+  }
+
+  function updateCarousel() {
+    const cardStyle = getComputedStyle(cards[0]);
+    const cardWidth = cards[0].offsetWidth + parseFloat(cardStyle.marginLeft) + parseFloat(cardStyle.marginRight);
+    wrapper.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    updateIndicators();
+  }
+
+  function updateIndicators() {
+    const dots = indicatorsContainer.querySelectorAll('.indicator');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  function createIndicators() {
+    indicatorsContainer.innerHTML = '';
+    const maxIndex = cards.length - getCardsPerView();
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('indicator');
+      if (i === currentIndex) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        currentIndex = i;
+        updateCarousel();
+      });
+      indicatorsContainer.appendChild(dot);
+    }
+  }
+
+  function nextSlide() {
+    const maxIndex = cards.length - getCardsPerView();
+    currentIndex = (currentIndex + 1) > maxIndex ? 0 : currentIndex + 1;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    const maxIndex = cards.length - getCardsPerView();
+    currentIndex = (currentIndex - 1) < 0 ? maxIndex : currentIndex - 1;
+    updateCarousel();
+  }
+
+  function handleResize() {
+    const isDesktop = window.innerWidth >= 1024;
+
+    prevBtn.style.display = isDesktop ? 'inline-block' : 'none';
+    nextBtn.style.display = isDesktop ? 'inline-block' : 'none';
+    indicatorsContainer.style.display = isDesktop ? 'flex' : 'none';
+
+    if (!isDesktop) {
+      startAutoSlide();
+    } else {
+      stopAutoSlide();
+    }
+
+    currentIndex = 0;
+    createIndicators();
+    updateCarousel();
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlideInterval = setInterval(() => {
+      nextSlide();
+    }, 4000);
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideInterval) {
+      clearInterval(autoSlideInterval);
+    }
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+  window.addEventListener('resize', handleResize);
+
+  // Inicialización
+  createIndicators();
+  updateCarousel();
+  handleResize();
+</script>
+
+<!-- SLIDER DE LOGOS-->
 <section class="tech-slider">
   <div class="slider-track">
     <img src="../../assets/angular.png" alt="Angular">
@@ -143,18 +241,6 @@
   </div>
 </section>
 
-
-<!-- Menú hamburguesa -->
-<script>
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.querySelector('.menu ul');
-
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('show');
-  });
-</script>
-</section>
-
 <!-- FOOTER -->
 <footer class="footer">
   <div class="footer-content">
@@ -170,5 +256,7 @@
     <p>&copy; 2023 YEDA. Todos los derechos reservados.</p>
   </div>
 </footer>
+
+
 </body>
 </html>
