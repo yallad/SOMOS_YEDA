@@ -19,9 +19,9 @@ export class Contact implements AfterViewInit {
   isPlaying = false;
 
   constructor(
-    private fb: FormBuilder,
-    private renderer: Renderer2,
-    private el: ElementRef
+    private  readonly fb: FormBuilder,
+    private readonly renderer: Renderer2,
+    private  readonly el: ElementRef
   ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -42,22 +42,17 @@ export class Contact implements AfterViewInit {
 
       console.log("📤 Enviando datos a Google Sheets:", formData);
 
-      fetch('https://script.google.com/macros/s/AKfycbx6BbofOTCyzH-YGdTG-fT88DpDAc4yha2XXTuwqDAR7HWGbZ31xYbvrCITPT-M56rV/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbzeMbyprXkO22xfGe_XQuFtn5TghGEQQB7VqwXwmtp38H3XxfhgZOH5MP-PJ4hBAID8SA/exec', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
-        mode: 'no-cors' // ⛔ no permite ver respuesta, pero sí enviar
+        mode: 'no-cors'
       })
         .then(() => {
-          // ✅ Asumimos éxito y mostramos mensaje
           this.success = true;
           this.contactForm.reset();
           this.submitted = false;
-
-          // Muestra ventana emergente
-          alert('✅ ¡Mensaje enviado con éxito!');
-
-          // Oculta el mensaje visual si lo usas en HTML
+          alert(' ¡Mensaje enviado con éxito!');
           setTimeout(() => this.success = false, 4000);
         })
         .catch(error => {
@@ -68,55 +63,6 @@ export class Contact implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const waFloat = this.el.nativeElement.querySelector('.whatsapp-float');
-    if (waFloat) {
-      let isDragging = false, offsetX = 0, offsetY = 0, moved = false;
-
-      const onMouseDown = (e: MouseEvent) => {
-        isDragging = true;
-        moved = false;
-        offsetX = e.clientX - waFloat.getBoundingClientRect().left;
-        offsetY = e.clientY - waFloat.getBoundingClientRect().top;
-        waFloat.style.transition = 'none';
-        waFloat.style.pointerEvents = 'none';
-        document.body.style.userSelect = 'none';
-      };
-
-      const onMouseMove = (e: MouseEvent) => {
-        if (isDragging) {
-          moved = true;
-          const iconWidth = waFloat.offsetWidth;
-          const iconHeight = waFloat.offsetHeight;
-          const maxLeft = window.innerWidth - iconWidth;
-          const maxTop = window.innerHeight - iconHeight;
-          let left = e.clientX - offsetX;
-          let top = e.clientY - offsetY;
-          left = Math.max(0, Math.min(left, maxLeft));
-          top = Math.max(0, Math.min(top, maxTop));
-          waFloat.style.left = left + 'px';
-          waFloat.style.top = top + 'px';
-          waFloat.style.right = 'auto';
-          waFloat.style.bottom = 'auto';
-          waFloat.style.position = 'fixed';
-        }
-      };
-
-      const onMouseUp = () => {
-        if (isDragging) {
-          waFloat.style.transition = '';
-          waFloat.style.pointerEvents = '';
-          document.body.style.userSelect = '';
-          if (!moved) waFloat.click();
-        }
-        isDragging = false;
-        moved = false;
-      };
-
-      this.renderer.listen(waFloat, 'mousedown', onMouseDown);
-      this.renderer.listen('window', 'mousemove', onMouseMove);
-      this.renderer.listen('window', 'mouseup', onMouseUp);
-    }
-
     const video = this.el.nativeElement.querySelector('#miniVideo');
     const btn = this.el.nativeElement.querySelector('#playPauseBtn');
     if (video && btn) {
