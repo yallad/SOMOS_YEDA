@@ -24,10 +24,46 @@ export class Contact implements AfterViewInit {
     private  readonly el: ElementRef
   ) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(10)]]
+      name: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(100),
+        Validators.pattern('^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\\s]+$')
+      ]
+      ],
+      email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+      ]
+      ],
+      message: ['', [Validators.required, Validators.minLength(20)]]
     });
+  }
+
+  getError(controlName: string): string | null {
+    const control = this.contactForm.get(controlName);
+    if (!control || !control.errors || !control.touched && !this.submitted) return null;
+
+    if (control.errors['required']) {
+      return 'Este campo es obligatorio.';
+    }
+    if (control.errors['minlength']) {
+      return `Debe tener al menos ${control.errors['minlength'].requiredLength} caracteres.`;
+    }
+    if (control.errors['maxlength']) {
+      return `No puede exceder ${control.errors['maxlength'].requiredLength} caracteres.`;
+    }
+    if (control.errors['pattern']) {
+      return 'Formato inválido.';
+    }
+    if (control.errors['email']) {
+      return 'Correo electrónico inválido.';
+    }
+    return null;
   }
 
   get f() {

@@ -227,25 +227,49 @@ body {
 .contact-method-card:focus {
   color: #5D5B9B;
 }
+
+
+
 .contact-method-icon {
-  width: 64px;
-  height: 64px;
-  margin-bottom: 10px;
+  width: 74px;                /* Tamaño del círculo */
+  height: 74px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px #BC92C044;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.18s, transform 0.18s, filter 0.18s;
+  overflow: hidden;
+  padding: 0;
+}
+
+.contact-method-icon {
+  width: 32px;                /* Tamaño fijo de la imagen dentro del círculo */
+  height: 32px;
+  object-fit: contain;
+  display: block;
   border-radius: 0;
   background: none;
   box-shadow: none;
+  margin: 0;
   padding: 0;
-  transition: filter 0.18s, transform 0.18s;
-  display: block;
 }
+
 .contact-method-card:hover .contact-method-icon,
 .contact-method-card:focus .contact-method-icon {
-  filter: drop-shadow(0 0 12px #5D5B9B) brightness(1.2);
+  box-shadow: 0 4px 24px #5D5B9B55;
+  filter: brightness(1.15) drop-shadow(0 0 8px #5D5B9B33);
   transform: scale(1.08);
+  background: #F4DAF6;
 }
+
+
+/* Centra el texto debajo del icono */
 .contact-method-card span {
   display: block;
-  margin-top: 2px;
+  margin-top: 6px;
   font-size: 1.08rem;
   color: #333769;
   text-align: center;
@@ -394,3 +418,59 @@ body {
   50% { border-color: transparent; }
 }
 /* ...existing code... */
+/* ...existing code... */
+
+/* Estilo para mostrar errores debajo de los campos */
+.error {
+  color: #e74c3c;
+  font-size: 0.97rem;
+  margin-top: 2px;
+  margin-bottom: 0;
+  text-align: left;
+  padding-left: 4px;
+}
+
+/* Bordes rojos para campos con error: solo si han sido tocados (ng-touched) */
+.input-icon-group.input-error:has(input.ng-invalid.ng-touched),
+.input-icon-group.input-error:has(textarea.ng-invalid.ng-touched),
+textarea.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched {
+  border: 1.5px solid #e74c3c !important;
+  box-shadow: 0 0 0 2px #e74c3c33 !important;
+}
+
+/* Botón deshabilitado: solo se ve gris si el formulario fue tocado */
+button[disabled]:not(.form-touched),
+button.disabled-btn:not(.form-touched) {
+  background: #0D0D38 !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  border: none !important;
+  box-shadow: 0 2px 8px #BC92C044 !important;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s !important;
+}
+
+/* Cuando el formulario fue tocado, el botón deshabilitado sí se ve gris */
+button[disabled].form-touched,
+button.disabled-btn.form-touched {
+  background: #ccc !important;
+  color: #888 !important;
+  cursor: not-allowed !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+/* Botón habilitado: color normal */
+.contact-form button:not([disabled]):not(.disabled-btn) {
+  background: #0D0D38;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+.contact-form button:not([disabled]):not(.disabled-btn):hover {
+  background: linear-gradient(90deg, #333769 0%, #0D0D38 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px #33376966;
+}
