@@ -1,0 +1,96 @@
+
+.whatsapp-icon {
+position: fixed; /* Posiciona el ícono en la esquina inferior derecha */
+bottom: 30px; /* Distancia desde el fondo de la ventana */
+right: 50px; /* Distancia desde el lado derecho de la ventana */
+width: 110px;   /* Ancho del ícono */
+height:470px;/* Alto del ícono */
+cursor: grab;   /* Cambia el cursor al pasar sobre el ícono */
+z-index: 9999;  /* Asegura que el ícono esté por encima de otros elementos */
+transition: transform 0.3s ease; /* Transición suave al interactuar con el ícono */
+
+
+background-color: transparent;  /* Fondo transparente para que el ícono sea visible */
+}
+
+.whatsapp-icon img {
+  width: 100%; /* Ancho completo del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 70%; 
+ 
+}
+
+.whatsapp-icon:active {
+  cursor: grabbing; /* Cambia el cursor al hacer clic y arrastrar */       
+}
+
+
+.whatsapp-chatbox {
+  position: fixed; /* Posiciona el chatbox en la esquina inferior derecha */
+  bottom: 110px; /* Distancia desde el fondo de la ventana */
+  right: 20px;  /*distancia*/
+  width: 290px; 
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 9998;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.chat-header {
+  background-color: #3C096C;
+  color: #fff;
+  padding: 10px 15px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.chat-body {
+  padding: 15px; 
+}
+
+.chat-body p {
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.chat-body textarea {
+  width: 95%;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.6rem;
+}
+
+.chat-body button {
+  margin-top: 8px;
+  width: 100%;  /* Ancho completo del botón */
+  padding: 10px;
+  background-color: #10002b; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  border: none;
+  border-radius: 8px; /* Bordes redondeados */
+
+  font-weight: bold; /* Negrita para el texto del botón */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s;/* Transición suave al pasar el cursor */
+}
+
+.chat-body button:hover {
+  background-color: #220040; /* Cambia el color de fondo al pasar el cursor */
+}
