@@ -1,5 +1,44 @@
-<section class="portada">
-  <h1>Hola, somos <span>YEDA</span></h1>
-  <p>Bienvenidos.</p>
+<!-- home.component.html -->
+<section class="intro">
+  <div class="intro-gif">
+    <img src="../../assets/YEDAsaludo.gif" alt="Saludo YEDA" />
+    <a href="#contacto" class="contact-button">Contáctanos</a>
+  </div>
+ <div class="intro-texto">
+  <h1>¡Bienvenidos a YEDA!</h1>
+  <p>Somos un equipo de mujeres desarrolladoras apasionadas por la tecnología y la innovación. Creamos soluciones digitales a medida que se adaptan a las necesidades específicas de cada empresa, combinando funcionalidad, diseño y eficiencia.</p>
+  <p>En YEDA creemos en la transformación a través del código. Por eso, nos enfocamos en el desarrollo de aplicaciones web y móviles que no solo resuelven problemas, sino que también potencian oportunidades.</p>
+  <p>Trabajamos en colaboración cercana con nuestros clientes para garantizar resultados excepcionales, guiadas por el compromiso, la empatía y el deseo de construir tecnología con propósito.</p>
+</div>
+
 </section>
 
+<h2 class="servicios-title">NUESTROS SERVICIOS</h2>
+
+<section id="servicios" class="services-section">
+  <div class="carousel-container">
+    <div class="carousel-wrapper" id="carousel-wrapper">
+      <div class="carousel-card" *ngFor="let service of services">
+        <div class="card-text">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.description }}</p>
+          <a href="#" class="btn-ver-mas">Ver más</a>
+        </div>
+        <div class="card-image">
+          <img [src]="service.image" [alt]="service.title">
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button id="prevBtn" class="carousel-btn">&larr;</button>
+      <div class="carousel-indicators" id="carousel-indicators"></div>
+      <button id="nextBtn" class="carousel-btn">&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section class="tech-slider">
+  <div class="slider-track">
+    <img *ngFor="let logo of techLogos" [src]="logo" alt="Tecnología">
+  </div>
+</section>

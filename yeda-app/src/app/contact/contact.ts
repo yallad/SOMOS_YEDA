@@ -1,8 +1,13 @@
 import { Component, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, AfterViewInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './contact.html',
   styleUrls: ['./contact.css']
 })
@@ -12,9 +17,9 @@ export class Contact implements AfterViewInit {
   success = false;
 
   constructor(
-    private fb: FormBuilder,
-    private renderer: Renderer2,
-    private el: ElementRef
+    private  readonly fb: FormBuilder,
+    private readonly renderer: Renderer2,
+    private  readonly el: ElementRef
   ) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
@@ -23,14 +28,35 @@ export class Contact implements AfterViewInit {
     });
   }
 
-  get f() { return this.contactForm.controls; }
+  get f() {
+    return this.contactForm.controls;
+  }
 
   onSubmit() {
     this.submitted = true;
+
     if (this.contactForm.valid) {
-      this.success = true;
-      this.contactForm.reset();
-      setTimeout(() => this.success = false, 4000);
+      const formData = this.contactForm.value;
+
+      console.log("📤 Enviando datos a Google Sheets:", formData);
+
+      fetch('https://script.google.com/macros/s/AKfycbzeMbyprXkO22xfGe_XQuFtn5TghGEQQB7VqwXwmtp38H3XxfhgZOH5MP-PJ4hBAID8SA/exec', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+        mode: 'no-cors'
+      })
+        .then(() => {
+          this.success = true;
+          this.contactForm.reset();
+          this.submitted = false;
+          alert(' ¡Mensaje enviado con éxito!');
+          setTimeout(() => this.success = false, 4000);
+        })
+        .catch(error => {
+          console.error('❌ Error al enviar al Web App de Google Sheets:', error);
+          alert('❌ Error al enviar. Intenta más tarde.');
+        });
     }
   }
 
@@ -94,5 +120,33 @@ export class Contact implements AfterViewInit {
       }
     }
     typeWriterH3();
+    const video = this.el.nativeElement.querySelector('#miniVideo');
+    const btn = this.el.nativeElement.querySelector('#playPauseBtn');
+    if (video && btn) {
+      btn.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+          btn.textContent = '❚❚';
+        } else {
+          video.pause();
+          btn.textContent = '▶';
+        }
+      });
+
+      video.addEventListener('click', () => {
+        if (!video.paused) {
+          video.pause();
+          btn.textContent = '▶';
+        }
+      });
+
+      video.addEventListener('play', () => {
+        btn.textContent = '❚❚';
+      });
+
+      video.addEventListener('pause', () => {
+        btn.textContent = '▶';
+      });
+    }
   }
 }
