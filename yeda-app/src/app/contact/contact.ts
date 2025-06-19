@@ -1,6 +1,4 @@
-import { Component, AfterViewInit, Renderer2, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, AfterViewInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, Renderer2, ElementRef, } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
