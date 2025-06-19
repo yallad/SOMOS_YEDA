@@ -14,27 +14,27 @@ export class Home {
   services = [
     {
       title: 'Webs corporativas',
-      description: 'Creamos sitios web personalizados y optimizados para tu negocio.',
+      description: 'Creamos sitios web personalizados y optimizados para tu negocio. Aumenta tu presencia en línea con un diseño atractivo y funcional.',
       image: '../../assets/CarruselDS1.png'
     },
     {
       title: 'Diseño a medida',
-      description: 'Desarrollamos aplicaciones móviles intuitivas y funcionales para iOS y Android.',
+      description: 'Desarrollamos aplicaciones móviles intuitivas y funcionales para iOS y Android. Lleva tu negocio al siguiente nivel con un diseño personalizado.',
       image: '../../assets/CarruselApp2.png'
     },
     {
       title: 'Tiendas online',
-      description: 'Desarrollamos soluciones de software personalizadas para optimizar tus procesos empresariales.',
+      description: 'Desarrollamos soluciones de software personalizadas para optimizar tus procesos empresariales. Desde aplicaciones de escritorio hasta sistemas de gestión, tenemos la solución perfecta para ti.',
       image: '../../assets/Carruselsoft3.png'
     },
     {
       title: 'Consultoría UX/UI',
-      description: 'Creamos diseños atractivos y funcionales que reflejan la identidad de tu marca.',
+      description: 'Creamos diseños atractivos y funcionales que reflejan la identidad de tu marca. Mejoramos la experiencia del usuario y aumentamos la conversión de tus productos digitales.',
       image: '../../assets/Carruseldise4.png'
     },
     {
       title: 'Desarrollo ágil',
-      description: 'Ofrecemos asesoramiento experto para ayudarte a tomar decisiones informadas sobre tus proyectos tecnológicos.',
+      description: 'Ofrecemos asesoramiento experto para ayudarte a tomar decisiones informadas sobre tus proyectos tecnológicos. Desde la planificación hasta la implementación, te acompañamos en cada paso del camino.',
       image: '../../assets/Carruselconsu5.png'
     }
   ];
