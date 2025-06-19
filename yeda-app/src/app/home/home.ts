@@ -13,27 +13,27 @@ export class Home {
 
   services = [
     {
-      title: 'Desarrollo Web',
+      title: 'Webs corporativas',
       description: 'Creamos sitios web personalizados y optimizados para tu negocio.',
       image: '../../assets/CarruselDS1.png'
     },
     {
-      title: 'Aplicaciones Móviles',
+      title: 'Diseño a medida',
       description: 'Desarrollamos aplicaciones móviles intuitivas y funcionales para iOS y Android.',
       image: '../../assets/CarruselApp2.png'
     },
     {
-      title: 'Software a la medida',
+      title: 'Tiendas online',
       description: 'Desarrollamos soluciones de software personalizadas para optimizar tus procesos empresariales.',
       image: '../../assets/Carruselsoft3.png'
     },
     {
-      title: 'Diseño',
+      title: 'Consultoría UX/UI',
       description: 'Creamos diseños atractivos y funcionales que reflejan la identidad de tu marca.',
       image: '../../assets/Carruseldise4.png'
     },
     {
-      title: 'Consultoría',
+      title: 'Desarrollo ágil',
       description: 'Ofrecemos asesoramiento experto para ayudarte a tomar decisiones informadas sobre tus proyectos tecnológicos.',
       image: '../../assets/Carruselconsu5.png'
     }
