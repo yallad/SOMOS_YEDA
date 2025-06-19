@@ -1,0 +1,19 @@
+<div id="whatsapp-icon"
+     class="whatsapp-icon"
+     (mousedown)="startDrag($event)"
+     (touchstart)="startDrag($event)"
+     (click)="toggleChat()">
+  <img src="assets/contacto.png" alt="YEDA WhatsApp">
+</div>
+
+<div *ngIf="isOpen" class="whatsapp-chatbox">
+  <div class="chat-header">
+    <strong>Contactanos</strong>
+    <button (click)="toggleChat()">&times;</button>
+  </div>
+  <div class="chat-body">
+    <p>Hola, soy YEDA 🦦<br>¿En qué podemos ayudarte?</p>
+    <textarea [(ngModel)]="message" placeholder="Escribe tu mensaje..."></textarea>
+    <button (click)="sendToWhatsApp()">Enviar</button>
+  </div>
+</div>
