@@ -111,6 +111,14 @@
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+.carousel-slide {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 
 .carousel-card {
   background: #dcdddf80;
@@ -265,9 +273,6 @@
 
 /* Celulares */
 @media (max-width: 768px) {
-  
- 
- 
 
   .intro {
     flex-direction: column;
@@ -289,4 +294,46 @@
   .btn-ver-mas {
     font-size: 0.85rem;
   }
+
+  /* SLIDER responsive */
+  .tech-slider {
+    padding: 15px 0;
+    margin-top: 30px;
+  }
+
+  .slider-track {
+    gap: 10px;
+  }
+
+  .slider-track img {
+    width: 32px;
+    margin: 0 10px;
+  }
+  .card-image {
+    max-width: 70%; 
+    margin: 0 auto;
+  }
+
+  .card-image img {
+    width: 100%; 
+    max-width: 180px; 
+    height: auto;
+  }
+
+  /* Carousel responsive */
+  .carousel-container {
+    max-width: 90%;
+    padding: 0 8px;
+  }
+  .carousel-card {
+    min-width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+  .card-text {
+    max-width: 100%;
+    text-align: center;
+  }
+  
 }

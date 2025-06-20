@@ -3,12 +3,14 @@
     <a routerLink="/" class="logo">
       <img src="assets/logo-yeda.png" alt="YEDA" />
     </a>
+
     <nav class="nav" id="nav-menu">
-      <ul class="nav__list">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">Sobre Nosotros</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">Contacto</a></li>
+      <ul class="nav__list" #navListRef>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">Inicio</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">Sobre Nosotros</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contacto</a></li>
       </ul>
+
       <button class="menu-toggle" aria-label="Abrir menú" (click)="toggleMenu()">☰</button>
     </nav>
   </div>
