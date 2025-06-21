@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './home.html',
   styleUrls: ['./home.css']
 })
-export class Home {
+export class Home implements OnInit, OnDestroy {
   currentSlide = 0;
+  private intervalId: any;
 
   services = [
     {
@@ -61,7 +63,7 @@ export class Home {
   ];
 
   get totalSlides(): number {
-    return this.services.length;
+    return 3;
   }
 
   nextSlide() {
@@ -74,5 +76,18 @@ export class Home {
 
   goToSlide(index: number) {
     this.currentSlide = index;
+  }
+
+  ngOnInit(): void {
+    this.intervalId = setInterval(() => {
+      this.nextSlide();
+    }, 5000); 
+  }
+  
+
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 }

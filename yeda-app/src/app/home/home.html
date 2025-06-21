@@ -1,23 +1,34 @@
-<!-- home.component.html -->
+<!-- INTRODUCCIÓN -->
 <section class="intro">
   <div class="intro-gif">
     <img src="../../assets/YEDAsaludo.gif" alt="Saludo YEDA" />
-    <a href="#contacto" class="contact-button">Contáctanos</a>
-  </div>
- <div class="intro-texto">
-  <h1>¡Bienvenidos a YEDA!</h1>
-  <p>Somos un equipo de mujeres desarrolladoras apasionadas por la tecnología y la innovación. Creamos soluciones digitales a medida que se adaptan a las necesidades específicas de cada empresa, combinando funcionalidad, diseño y eficiencia.</p>
-  <p>En YEDA creemos en la transformación a través del código. Por eso, nos enfocamos en el desarrollo de aplicaciones web y móviles que no solo resuelven problemas, sino que también potencian oportunidades.</p>
-  <p>Trabajamos en colaboración cercana con nuestros clientes para garantizar resultados excepcionales, guiadas por el compromiso, la empatía y el deseo de construir tecnología con propósito.</p>
-</div>
+    <a routerLink="/contact" class="contact-button">Contáctanos</a>
 
+  </div>
+  <div class="intro-texto">
+    <h1>¡Bienvenidos a YEDA!</h1>
+    <p>
+      Somos un equipo de mujeres desarrolladoras apasionadas por la tecnología y la innovación. Creamos soluciones digitales a medida que se adaptan a las necesidades específicas de cada empresa, combinando funcionalidad, diseño y eficiencia.
+    </p>
+    <p>
+      En YEDA creemos en la transformación a través del código. Por eso, nos enfocamos en el desarrollo de aplicaciones web y móviles que no solo resuelven problemas, sino que también potencian oportunidades.
+    </p>
+    <p>
+      Trabajamos en colaboración cercana con nuestros clientes para garantizar resultados excepcionales, guiadas por el compromiso, la empatía y el deseo de construir tecnología con propósito.
+    </p>
+  </div>
 </section>
 
+<!-- TÍTULO -->
 <h2 class="servicios-title">NUESTROS SERVICIOS</h2>
 
+<!-- CARRUSEL DE SERVICIOS -->
 <section id="servicios" class="services-section">
   <div class="carousel-container">
-    <div class="carousel-wrapper" id="carousel-wrapper">
+    <!-- Aquí movemos el wrapper usando transform -->
+    <div class="carousel-wrapper"
+         [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'"
+         [style.transition]="'transform 0.5s ease-in-out'">
       <div class="carousel-card" *ngFor="let service of services">
         <div class="card-text">
           <h3>{{ service.title }}</h3>
@@ -28,14 +39,26 @@
         </div>
       </div>
     </div>
+
+    <!-- Controles -->
     <div class="carousel-controls">
-      <button id="prevBtn" class="carousel-btn">&larr;</button>
-      <div class="carousel-indicators" id="carousel-indicators"></div>
-      <button id="nextBtn" class="carousel-btn">&rarr;</button>
+      <button class="carousel-btn" (click)="prevSlide()">&larr;</button>
+
+      <div class="carousel-indicators">
+  <span *ngFor="let service of services; index as i"
+        [class.active]="i === currentSlide"
+        (onclick)="goToSlide(i)">
+    ●
+  </span>
+</div>
+
+
+      <button class="carousel-btn" (click)="nextSlide()">&rarr;</button>
     </div>
   </div>
 </section>
 
+<!-- CINTA DE TECNOLOGÍAS -->
 <section class="tech-slider">
   <div class="slider-track">
     <img *ngFor="let logo of techLogos" [src]="logo" alt="Tecnología">
