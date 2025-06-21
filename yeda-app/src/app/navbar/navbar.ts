@@ -17,7 +17,7 @@ export class Navbar {
   }
 
   closeMenu() {
-    // Solo cerramos el menú si el ancho de pantalla es pequeño (ej. móvil)
+    
     if (window.innerWidth <= 768) {
       const navList = this.navListRef?.nativeElement;
       navList?.classList.remove('show');
