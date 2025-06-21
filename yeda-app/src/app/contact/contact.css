@@ -8,7 +8,7 @@ body {
   font-family: 'Segoe UI', SegoeUI, Arial, sans-serif;
 }
 .titulo-destacado {
-  font-size: 2rem;
+  font-size: 2.7rem;
   font-weight: bold;
   color: #0D0D38;
   text-shadow: 0 1px 3px #5D5B9B;
@@ -17,6 +17,33 @@ body {
   max-width: 1100px;
   margin: 48px auto 32px auto;
   padding: 0 16px;
+}
+.contact-content-row {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.contact-form-container,
+.contact-side-container {
+  flex: 1 1 340px;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px #BC92C044, 0 1.5px 8px #5D5B9B22;
+  padding: 36px 28px 28px 28px;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact-side-container {
+  min-width: 260px;
+  box-shadow: 0 4px 18px #BC92C044;
+  padding: 36px 24px;
+  align-items: center;
+  min-height: 320px;
 }
 .side-gif {
   max-width: 90vw;
@@ -29,27 +56,6 @@ body {
   border: none;
   padding: 0;
   background: none;
-}
-.contact-content-row {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-.contact-form-container {
-  flex: 1 1 340px;
-  max-width: 400px;
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 8px 32px #BC92C044, 0 1.5px 8px #5D5B9B22;
-  border-top: 6px solid #333769;
-  padding: 36px 28px 28px 28px;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  animation: fadeIn 1.2s cubic-bezier(.39,.575,.56,1) both;
 }
 .contact-header {
   text-align: center;
@@ -64,8 +70,9 @@ body {
 }
 .contact-header p {
   color: #333769;
-  font-size: 1.05rem;
-  margin: 0;
+ font-size: 1.2rem;
+  margin: 0 0 1.2rem 0;
+  text-align: justify;
 }
 .contact-form {
   display: flex;
@@ -89,17 +96,20 @@ body {
 .input-icon-group:focus-within {
   border-color: #5D5B9B;
   box-shadow: 0 0 0 2px #333769;
-  background: #fff;
 }
 .input-icon {
-  margin-right: 8px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
 }
 .input-icon img {
-  width: 22px;
-  height: 22px;
-  opacity: 0.7;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  opacity: 0.8;
 }
 .contact-form input,
 .contact-form textarea {
@@ -125,7 +135,8 @@ body {
   background: #fff;
   box-shadow: 0 0 0 2px #333769;
 }
-.contact-form button {
+.contact-form button,
+.contact-form button:not([disabled]):not(.disabled-btn) {
   width: 100%;
   padding: 13px;
   background: #0D0D38;
@@ -140,45 +151,11 @@ body {
   box-shadow: 0 2px 8px #BC92C044;
   letter-spacing: 0.5px;
 }
-.contact-form button:hover {
+.contact-form button:hover,
+.contact-form button:not([disabled]):not(.disabled-btn):hover {
   background: linear-gradient(90deg, #333769 0%, #0D0D38 100%);
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 4px 16px #33376966;
-}
-.contact-side-container {
-  flex: 1 1 320px;
-  max-width: 400px;
-  min-width: 260px;
-  background: #fff;
-  border-radius: 22px;
-  box-shadow: 0 4px 18px #BC92C044;
-  padding: 36px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 320px;
-}
-.side-placeholder {
-  text-align: center;
-  color: #5D5B9B;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 0 10px;
-}
-
-.side-placeholder h3 {
-  margin-bottom: 10px;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #333769;
-}
-.side-placeholder p {
-  color: #5D5B9B;
 }
 .contact-other-container {
   margin: 48px auto 0 auto;
@@ -199,14 +176,13 @@ body {
 }
 .contact-methods-row {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 18px;
 }
 .contact-method-card {
   background: none;
-  border: none;
   box-shadow: none;
   padding: 0;
   min-width: unset;
@@ -223,50 +199,34 @@ body {
   overflow: visible;
   cursor: pointer;
 }
-.contact-method-card:hover,
-.contact-method-card:focus {
-  color: #5D5B9B;
-}
-
-
-
 .contact-method-icon {
-  width: 74px;                /* Tamaño del círculo */
-  height: 74px;
+  width: 64px;
+  height: 64px;
   margin-bottom: 8px;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 2px 12px #BC92C044;
+  box-shadow: 0 2px 8px #BC92C044;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: box-shadow 0.18s, transform 0.18s, filter 0.18s;
   overflow: hidden;
-  padding: 0;
+  padding: 10px;
 }
-
-.contact-method-icon {
-  width: 32px;                /* Tamaño fijo de la imagen dentro del círculo */
-  height: 32px;
+.contact-method-icon img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   display: block;
-  border-radius: 0;
   background: none;
-  box-shadow: none;
-  margin: 0;
-  padding: 0;
 }
-
 .contact-method-card:hover .contact-method-icon,
 .contact-method-card:focus .contact-method-icon {
-  box-shadow: 0 4px 24px #5D5B9B55;
-  filter: brightness(1.15) drop-shadow(0 0 8px #5D5B9B33);
+  box-shadow: 0 4px 16px #5D5B9B55;
+  filter: brightness(1.15) drop-shadow(0 0 6px #5D5B9B33);
   transform: scale(1.08);
   background: #F4DAF6;
 }
-
-
-/* Centra el texto debajo del icono */
 .contact-method-card span {
   display: block;
   margin-top: 6px;
@@ -276,200 +236,122 @@ body {
   font-weight: 500;
   letter-spacing: 0.2px;
 }
-.whatsapp-float {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  z-index: 200;
-  border-radius: 50%;
-  background: none;
-  padding: 0;
-  border: none;
-  box-shadow: none;
-  cursor: grab;
-  user-select: none;
-  transition: filter 0.2s, transform 0.15s;
-  animation: fadeIn 1.2s 0.5s cubic-bezier(.39,.575,.56,1) both;
-  width: 64px;
-  height: 64px;
+.side-placeholder {
+  text-align: center;
+  color: #5D5B9B;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  padding: 0 10px;
 }
-.whatsapp-float img {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: none;
-  box-shadow: none;
-  transition: filter 0.2s, box-shadow 0.2s;
-  display: block;
+.side-placeholder h3 {
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333769;
 }
-.whatsapp-float:hover img,
-.whatsapp-float:focus img {
-  filter: drop-shadow(0 0 18px #5D5B9B) brightness(1.2);
-  box-shadow: 0 0 0 6px #F4DAF6;
-  background: none;
-  outline: none;
-  border: none;
+.side-placeholder p {
+  color: #5D5B9B;
 }
-@media (max-width: 900px) {
-  .contact-content-row {
-    flex-direction: column;
-    gap: 24px;
-    align-items: stretch;
-  }
-  .contact-form-container,
-  .contact-side-container {
-    max-width: 100%;
-    min-width: 0;
-  }
-  .contact-side-container {
-    min-height: 160px;
-    padding: 18px 10px;
-  }
-  .contact-other-container {
-    padding: 18px 8px;
-  }
-  .contact-methods-row {
-    gap: 22px;
-  }
-  .side-gif {
-    width: 160px;
-    height: 160px;
-  }
-  .contact-method-icon,
-  .whatsapp-float img {
-    width: 48px;
-    height: 48px;
-  }
-  .whatsapp-float {
-    width: 48px;
-    height: 48px;
-  }
-}
-@media (max-width: 600px) {
-  .contact-main-layout {
-    padding: 0 2vw;
-  }
-  .contact-form-container,
-  .contact-side-container {
-    padding: 12px 4vw;
-  }
-  .contact-other-container {
-    padding: 12px 2vw;
-  }
-  .contact-header h2 {
-    font-size: 1.3rem;
-  }
-  .contact-method-card {
-    min-width: 120px;
-    padding: 14px 8px;
-    font-size: 0.98rem;
-  }
-  .contact-method-icon,
-  .whatsapp-float img {
-    width: 38px;
-    height: 38px;
-  }
-  .whatsapp-float {
-    width: 38px;
-    height: 38px;
-    bottom: 18px;
-    right: 18px;
-  }
-  .side-gif {
-    width: 110px;
-    height: 110px;
-  }
-}
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(30px);}
-  100% { opacity: 1; transform: translateY(0);}
-}
-/* ...existing code... */
-.typewriter {
+
+/* Typewriter effect */
+.typewriter,
+#typewriter-p.typewriter {
   display: inline-block;
   border-right: 2px solid #5D5B9B;
-  white-space: normal; /* Permite salto de línea */
+  white-space: normal;
   overflow: hidden;
+  max-width: 100%;
+  word-break: break-word;
+  text-align: center;
+  animation: blink-caret 0.7s steps(1) infinite;
+}
+.typewriter {
   font-size: 1.15rem;
   font-weight: 700;
   color: #333769;
   letter-spacing: 1px;
   min-height: 1.3em;
-  animation: blink-caret 0.7s steps(1) infinite;
-  max-width: 100%;
-  word-break: break-word;
-  text-align: center;
 }
 #typewriter-p.typewriter {
   font-size: 1rem;
   font-weight: 400;
   color: #5D5B9B;
   margin-top: 10px;
-  border-right: 2px solid #5D5B9B;
-  max-width: 100%;
-  word-break: break-word;
-  text-align: center;
 }
 @keyframes blink-caret {
   0%, 100% { border-color: #5D5B9B; }
   50% { border-color: transparent; }
 }
-/* ...existing code... */
-/* ...existing code... */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
 
-/* Estilo para mostrar errores debajo de los campos */
+/* Campo obligatorio marcado */
+label.required::after {
+  content: ' *';
+  color: #e63946;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+/* Error message */
 .error {
-  color: #e74c3c;
+  color: #e63946;
   font-size: 0.97rem;
-  margin-top: 2px;
+  margin-top: 4px;
   margin-bottom: 0;
   text-align: left;
   padding-left: 4px;
+  animation: fadeIn 0.2s;
+  background: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.error::before {
+  content: '⚠️';
+  font-size: 1rem;
 }
 
-/* Bordes rojos para campos con error: solo si han sido tocados (ng-touched) */
-.input-icon-group.input-error:has(input.ng-invalid.ng-touched),
-.input-icon-group.input-error:has(textarea.ng-invalid.ng-touched),
-textarea.ng-invalid.ng-touched,
-input.ng-invalid.ng-touched {
-  border: 1.5px solid #e74c3c !important;
-  box-shadow: 0 0 0 2px #e74c3c33 !important;
+/* Borde rojo solo cuando hay error */
+.input-icon-group.input-error {
+  border: 2px solid #e63946 !important;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15) !important;
+  border-radius: 10px;
 }
 
-/* Botón deshabilitado: solo se ve gris si el formulario fue tocado */
-button[disabled]:not(.form-touched),
-button.disabled-btn:not(.form-touched) {
-  background: #0D0D38 !important;
-  color: #fff !important;
-  cursor: pointer !important;
-  border: none !important;
-  box-shadow: 0 2px 8px #BC92C044 !important;
-  transition: background 0.2s, transform 0.1s, box-shadow 0.2s !important;
+/* Quitar borde rojo si el usuario limpia el campo o no lo toca más */
+.input-icon-group:not(.input-error) {
+  border: 1.5px solid #BC92C0;
+  box-shadow: none;
 }
 
-/* Cuando el formulario fue tocado, el botón deshabilitado sí se ve gris */
-button[disabled].form-touched,
-button.disabled-btn.form-touched {
-  background: #ccc !important;
+/* Botón desactivado */
+button[disabled],
+button.disabled-btn {
+  background-color: #ccc !important;
   color: #888 !important;
   cursor: not-allowed !important;
-  border: none !important;
   box-shadow: none !important;
+  border: none !important;
   transition: none !important;
 }
 
-/* Botón habilitado: color normal */
-.contact-form button:not([disabled]):not(.disabled-btn) {
+/* Botón activo */
+button:not([disabled]):not(.disabled-btn) {
   background: #0D0D38;
   color: #fff;
   cursor: pointer;
   transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
 }
-
-.contact-form button:not([disabled]):not(.disabled-btn):hover {
+button:not([disabled]):not(.disabled-btn):hover {
   background: linear-gradient(90deg, #333769 0%, #0D0D38 100%);
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 4px 16px #33376966;

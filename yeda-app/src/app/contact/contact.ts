@@ -43,28 +43,45 @@ export class Contact implements AfterViewInit {
       message: ['', [Validators.required, Validators.minLength(20)]]
     });
   }
+  formTouched = false;
+
+ngOnInit() {
+  this.contactForm.valueChanges.subscribe(() => {
+    if (!this.formTouched) {
+      this.formTouched = true;
+    }
+  });
+}
 
   getError(controlName: string): string | null {
-    const control = this.contactForm.get(controlName);
-    if (!control || !control.errors || !control.touched && !this.submitted) return null;
+  const control = this.contactForm.get(controlName);
+  if (!control) return null;
+  if (!control.errors) return null;
+  if (!(control.touched || this.submitted)) return null;
 
-    if (control.errors['required']) {
-      return 'Este campo es obligatorio.';
-    }
-    if (control.errors['minlength']) {
-      return `Debe tener al menos ${control.errors['minlength'].requiredLength} caracteres.`;
-    }
-    if (control.errors['maxlength']) {
-      return `No puede exceder ${control.errors['maxlength'].requiredLength} caracteres.`;
-    }
-    if (control.errors['pattern']) {
-      return 'Formato inválido.';
-    }
-    if (control.errors['email']) {
-      return 'Correo electrónico inválido.';
-    }
-    return null;
+  if (control.errors['required']) {
+    return 'Este campo es obligatorio.';
   }
+  if (control.errors['minlength']) {
+    return `Debe tener al menos ${control.errors['minlength'].requiredLength} caracteres.`;
+  }
+  if (control.errors['maxlength']) {
+    return `No puede exceder ${control.errors['maxlength'].requiredLength} caracteres.`;
+  }
+  if (control.errors['pattern']) {
+    if (controlName === 'name') {
+      return 'Solo letras y espacios.';
+    }
+    if (controlName === 'email') {
+      return 'Formato de correo inválido.';
+    }
+    return 'Formato inválido.';
+  }
+  if (control.errors['email']) {
+    return 'Correo electrónico inválido.';
+  }
+  return null;
+}
 
   get f() {
     return this.contactForm.controls;
