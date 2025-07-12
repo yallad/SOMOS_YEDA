@@ -25,7 +25,7 @@ export class WhatsappFloat {
   sendToWhatsApp() {
     if (this.message.trim()) {
       const encodedMsg = encodeURIComponent(this.message);
-      const phone = '57342035583';
+      const phone = '573142035583';
       window.open(`https://wa.me/${phone}?text=${encodedMsg}`, '_blank');
       this.isOpen = false;
       this.message = '';
