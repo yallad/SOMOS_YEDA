@@ -24,11 +24,64 @@ export class Contact implements AfterViewInit {
     private  readonly el: ElementRef
   ) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(10)]]
+      name: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(100),
+        Validators.pattern('^[A-Za-zÁÉÍÓÚáéíóúÑñüÜ\\s]+$')
+      ]
+      ],
+      email: [
+      '',
+      [
+        Validators.required,
+        Validators.pattern('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+      ]
+      ],
+      message: ['', [Validators.required, Validators.minLength(20)]]
     });
   }
+  formTouched = false;
+
+ngOnInit() {
+  this.contactForm.valueChanges.subscribe(() => {
+    if (!this.formTouched) {
+      this.formTouched = true;
+    }
+  });
+}
+
+  getError(controlName: string): string | null {
+  const control = this.contactForm.get(controlName);
+  if (!control) return null;
+  if (!control.errors) return null;
+  if (!(control.touched || this.submitted)) return null;
+
+  if (control.errors['required']) {
+    return 'Este campo es obligatorio.';
+  }
+  if (control.errors['minlength']) {
+    return `Debe tener al menos ${control.errors['minlength'].requiredLength} caracteres.`;
+  }
+  if (control.errors['maxlength']) {
+    return `No puede exceder ${control.errors['maxlength'].requiredLength} caracteres.`;
+  }
+  if (control.errors['pattern']) {
+    if (controlName === 'name') {
+      return 'Solo letras y espacios.';
+    }
+    if (controlName === 'email') {
+      return 'Formato de correo inválido.';
+    }
+    return 'Formato inválido.';
+  }
+  if (control.errors['email']) {
+    return 'Correo electrónico inválido.';
+  }
+  return null;
+}
 
   get f() {
     return this.contactForm.controls;

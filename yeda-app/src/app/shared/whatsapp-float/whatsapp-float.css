@@ -1,35 +1,30 @@
-
 .whatsapp-icon {
-position: fixed; /* Posiciona el ícono en la esquina inferior derecha */
-bottom: 30px; /* Distancia desde el fondo de la ventana */
-right: 50px; /* Distancia desde el lado derecho de la ventana */
-width: 110px;   /* Ancho del ícono */
-height:470px;/* Alto del ícono */
-cursor: grab;   /* Cambia el cursor al pasar sobre el ícono */
-z-index: 9999;  /* Asegura que el ícono esté por encima de otros elementos */
-transition: transform 0.3s ease; /* Transición suave al interactuar con el ícono */
-
-
-background-color: transparent;  /* Fondo transparente para que el ícono sea visible */
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  width: 80px;
+  height: 80px;
+  cursor: grab;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  background-color: transparent;
 }
 
 .whatsapp-icon img {
-  width: 100%; /* Ancho completo del contenedor */
-  height: auto; /* Mantiene la proporción de la imagen */
-  border-radius: 70%; 
- 
+  width: 100%;
+  height: auto;
+  border-radius: 70%;
 }
 
 .whatsapp-icon:active {
-  cursor: grabbing; /* Cambia el cursor al hacer clic y arrastrar */       
+  cursor: grabbing;
 }
 
-
 .whatsapp-chatbox {
-  position: fixed; /* Posiciona el chatbox en la esquina inferior derecha */
-  bottom: 110px; /* Distancia desde el fondo de la ventana */
-  right: 20px;  /*distancia*/
-  width: 290px; 
+  position: fixed;
+  bottom: 110px;
+  right: 20px;
+  width: 290px;
   background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
@@ -57,12 +52,12 @@ background-color: transparent;  /* Fondo transparente para que el ícono sea vis
 }
 
 .chat-body {
-  padding: 15px; 
+  padding: 15px;
 }
 
 .chat-body p {
   margin-bottom: 10px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #333;
 }
 
@@ -74,23 +69,53 @@ background-color: transparent;  /* Fondo transparente para que el ícono sea vis
   padding: 8px;
   resize: none;
   font-family: inherit;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .chat-body button {
   margin-top: 8px;
-  width: 100%;  /* Ancho completo del botón */
+  width: 100%;
   padding: 10px;
-  background-color: #10002b; /* Color de fondo del botón */
-  color: #fff; /* Color del texto del botón */
+  background-color: #10002b;
+  color: #fff;
   border: none;
-  border-radius: 8px; /* Bordes redondeados */
-
-  font-weight: bold; /* Negrita para el texto del botón */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-  transition: background-color 0.3s;/* Transición suave al pasar el cursor */
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .chat-body button:hover {
-  background-color: #220040; /* Cambia el color de fondo al pasar el cursor */
+  background-color: #220040;
+}
+
+/* 📱 Responsive para celulares */
+@media (max-width: 600px) {
+  .whatsapp-icon {
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 15px;
+  }
+
+  .whatsapp-chatbox {
+    width: 90%;
+    right: 5%;
+    bottom: 90px;
+    font-size: 0.8rem;
+  }
+
+  .chat-body textarea {
+    font-size: 0.65rem;
+    height: 50px;
+  }
+
+  .chat-body button {
+    font-size: 0.75rem;
+    padding: 8px;
+  }
+
+  .chat-header button {
+    font-size: 1rem;
+  }
 }
